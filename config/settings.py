@@ -40,6 +40,8 @@ INSTALLED_APPS = [
 
     # o'zim yozilishiga sababchi bo'lgan applar
     'Asosiy',
+    #tashqi applar
+    'phonenumber_field',
 ]
 
 MIDDLEWARE = [

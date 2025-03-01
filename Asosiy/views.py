@@ -1,5 +1,7 @@
-from django.shortcuts import render
-from django.views.generic import TemplateView, ListView
+from django.shortcuts import render, redirect
+from django.views.generic import TemplateView, ListView, FormView
+
+from .form import ContactForm
 from .models import *
 
 # Create your views here.
@@ -31,4 +33,15 @@ class Korrupsiya_kurashView(ListView):
     template_name = 'korrupsiya_kurash.html'
     def get_context_data(self, **kwargs):
         context = super(Korrupsiya_kurashView, self).get_context_data(**kwargs)
-        context["korrupsiya"] = Korrupsiya_kurash.objects.all().filter(active=True)[:3]
+        context['Korrupsiyalar'] = Korrupsiya_kurash.objects.all().filter(active=True)[:3]
+        # print(context["korrupsiyalar"])
+        return context
+
+class ContactPageView(FormView):
+    template_name = 'contact.html'
+    form_class = ContactForm
+    success_url = '/'
+
+    def form_valid(self, form):
+        form.save()
+        return redirect('home')

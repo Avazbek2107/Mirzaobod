@@ -2,7 +2,7 @@ from django.core.exceptions import ValidationError
 from django.utils import timezone
 
 from django.db import models
-
+from phonenumber_field.modelfields import PhoneNumberField
 # Create your models here.
 
 
@@ -205,9 +205,14 @@ class Korrupsiya_kurash(models.Model):
 
     class Meta:
         ordering = ['publish_time']
-        # ordering = ['publish_time'] # birinchi yozilgna birinchi chiqadi
+        # ordering = ['-publish_time'] # eng oxirgi qo'shilgan element birinchi chiqadi
         verbose_name_plural = "Korrupsiyaga qarshi kurash"
 
+class Contact(models.Model):
+    email = models.EmailField()
+    name = models.CharField(max_length=100)
+    message = models.TextField()
+    number = PhoneNumberField(region="UZ")
 
 
 

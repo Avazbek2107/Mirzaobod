@@ -157,32 +157,31 @@
 
         <div class="container">
             <div class="row">
-                <div class="col-12">
-                    <h2 class="font-35 font-weight-bold fables-main-text-color my-3 my-lg-5 my-md-4 text-center">
-                        Korrupsiyaga qarshi kurashish boyicha tadbirlar</h2>
-                </div>
+                {% for korrupsiy in Korrupsiyalar %}
+                    <div class="col-12 col-md-4 mb-4 mb-lg-5 wow fadeIn" data-wow-delay=".9s">
+                        <div class="position-relative">
+                            <div class="image-container translate-effect-right">
+                                <a href="#"><img src="{{ korrupsiy.image.url }}" alt=""
+                                                 class="img-fluid w-100"></a>
 
-                <div class="col-12 col-md-4 mb-4 mb-lg-5 wow fadeIn" data-wow-delay=".9s">
-                    <div class="position-relative">
-                        <div class="image-container translate-effect-right">
-                            <a href="#"><img src="assets/custom/images/magazine-2559842.jpg" alt=""
-                                             class="img-fluid w-100"></a>
-                            <span class="above-date position-absolute text-center fables-second-background-color white-color px-3 py-2">
-                              <span class="bold-font day">27</span>  <span class="month d-block">JUNE</span>
-                          </span>
+                                <span class="above-date position-absolute text-center fables-second-background-color white-color px-3 py-2">
+                                    <span class="bold-font day">{{ korrupsiy.publish_time.day }}</span>
+                                    <span class="month d-block">{{ korrupsiy.publish_time|date:"F" }}</span>
+                                    <span class="month d-block">{{ korrupsiy.publish_time.year }}</span>
+                                </span>
+                            </div>
+                            <h2 class="font-18 my-3"><a href="#"
+                                                        class="fables-main-text-color fables-second-hover-color">
+                                {{ korrupsiy.nomi }}
+                            </a></h2>
+
+                            <p class="fables-forth-text-color font-14 mb-2">
+                                {{ korrupsiy.body_small}}
+                            </p>
+
                         </div>
-                        <h2 class="font-18 my-3"><a href="#" class="fables-main-text-color fables-second-hover-color">Getting
-                            to Another Level of Design and Functionality</a></h2>
-
-                        <p class="fables-forth-text-color font-14 mb-2">
-                            When you need your company to have a new website or if you venture on updating your old
-                            webpage with a new look and functionality. the choices are versatile Assuming that you will
-                            goWhen you need your company to have a new website or if you venture on updating your old
-                            webpage with a new look and functionality.
-                        </p>
-
                     </div>
-                </div>
+                {% endfor %}
             </div>
         </div>
 
@@ -197,7 +196,7 @@
 
                     </div>
                     <div class="col-12 col-md-4 offset-xl-2 col-xl-2 text-center">
-                        <a href="contact.html"
+                        <a href="{% url 'boglanish' %}"
                            class="btn fables-second-background-color fables-btn-rounded white-color mt-3 position-relative z-index font-19 px-5 white-color-hover">Bog'lanish</a>
                         <a href="https://t.me/mmtv_anticorbot"
                            class="btn fables-main-background-color fables-btn-rounded white-color mt-3 position-absolute z-index font-19 px-5 white-color-hover">
