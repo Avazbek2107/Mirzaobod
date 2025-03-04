@@ -114,7 +114,8 @@
                                     Ta'lim
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="sub-nav1">
-                                    <li><a class="dropdown-item" href="{% url 'hududiy_bolimlar' %}">Hududiy bo'limlar</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'hududiy_bolimlar' %}">Hududiy
+                                        bo'limlar</a></li>
                                     <li><a class="dropdown-item" href="{% url 'korrupsiya' %}">Korrupsiyaga qarshi
                                         kurash</a></li>
                                 </ul>
@@ -128,9 +129,9 @@
                                 <ul class="dropdown-menu" aria-labelledby="sub-nav2">
 
 
-                                    <li><a class="dropdown-item" href="rahbariyat_azolari.html">Rahbariyat a'zolari</a>
+                                    <li><a class="dropdown-item" href="{% url 'rahbariyat' %}">Rahbariyat a'zolari</a>
                                     </li>
-                                    <li><a class="dropdown-item" href="bayonotlar.html">Seminarlar</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'bayonolar' %}">Bayonotlar</a></li>
                                 </ul>
                             </li>
                             <li class="nav-item dropdown">
@@ -139,7 +140,7 @@
                                     Mmmtv
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="sub-nav3">
-                                    <li><a class="dropdown-item" href="harakatlar_strategiyasi.html">Harakatlar
+                                    <li><a class="dropdown-item" href="{% url 'harakatlar_strategiyasi' %}">Harakatlar
                                         strategiyasi va Davlat
                                         dasturlari </a></li>
                                 </ul>
@@ -150,9 +151,9 @@
                                     Yangiliklar
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="sub-nav4">
-                                    <li><a class="dropdown-item" href="yangiliklar.html">Yangiliklar dayjesti</a>
+                                    <li><a class="dropdown-item" href="{% url 'yangiliklar' %}">Yangiliklar dayjesti</a>
                                     </li>
-                                    <li><a class="dropdown-item" href="yangiliklar_single.html">Yangiliklar haqida
+                                    <li><a class="dropdown-item" href="blog/yangiliklar_single.html">Yangiliklar haqida
                                         batafsil</a></li>
                                 </ul>
                             </li>
@@ -180,15 +181,12 @@
                                     <li><a class="dropdown-item" href="galereya-single">Galereya Single</a></li>
                                 </ul>
                             </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="sub-nav7" data-toggle="dropdown"
-                                   aria-haspopup="true" aria-expanded="false">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'boglanish' %}">
                                     Bog'lanish
                                 </a>
-                                <ul class="dropdown-menu" aria-labelledby="sub-nav7">
-                                    <li><a class="dropdown-item" href="contact.html">Markaziy bo'linma uchun</a></li>
-                                </ul>
                             </li>
+
                         </ul>
 
                     </div>

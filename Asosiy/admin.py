@@ -5,7 +5,16 @@ from .models import (
     Tadbir,
     Konfirensiya,
     Rahbariyat,
-    Oxirgi_ishlar, Budjet, Numbers, Hududiy_Rahbariyat, Korrupsiya_kurash, Contact,
+    Oxirgi_ishlar,
+    Budjet,
+    Numbers,
+    Hududiy_Rahbariyat,
+    Korrupsiya_kurash,
+    Contact,
+    Bayonotlar,
+    Harakatlar,
+    Yangiliklar,
+    Yangiliklar_turi,
 )
 
 
@@ -188,6 +197,65 @@ class Korrupsiya_kurashAdmin(admin.ModelAdmin):
 
 admin.site.register(Contact)
 
+@admin.register(Bayonotlar)
+class Bayonotlar(admin.ModelAdmin):
+    list_display = ['name', 'last_name', 'fathers_name', 'publish_time']
+    list_filter = [
+        ('publish_time', admin.DateFieldListFilter),
+    ]
+
+    # data_hierarchy yil oy kun bo'yicha ajratish uchun ishlatiladi
+    date_hierarchy = 'publish_time'
+    search_fields = ['name', 'last_name', 'fathers_name']
+
+    # ordering tartiblash uchun ishlatiladi birinchi active bo'yicha keyin boshlanish_sanasi
+    ordering = ['publish_time']
+
+    # tahrirlash oynasni ochadi berilgan fieldlarni ustiga borganda
+    list_display_links = ['name', 'last_name', 'fathers_name']
+
+admin.site.register(Harakatlar)
+
+@admin.register(Yangiliklar_turi)
+class Yangiliklar_turiAdmin(admin.ModelAdmin):
+    list_didplay = ['id','name']
+    search_fields = ['name']
+    ordering = ['id']
+    prepopulated_fields = {'slug': ('name',)}
+
+@admin.register(Yangiliklar)
+class YangiliklarAdmin(admin.ModelAdmin):
+    list_display = ['name','turi','date','active']
+    list_filter = [
+        'turi',
+        ('date',admin.DateFieldListFilter),
+    ]
+
+    # slugni avtomatik to'ldirish keyinchalik
+
+    prepopulated_fields = {'slug': ('name',)}
+
+    # data_hierarchy yil oy kun bo'yicha ajratish uchun ishlatiladi
+    date_hierarchy = 'date'
+    search_fields = ['name']
+
+    # ordering tartiblash uchun ishlatiladi birinchi active bo'yicha keyin boshlanish_sanasi
+    ordering = ['active','date']
 
 
+    # tahrirlash oynasni ochadi berilgan fieldlarni ustiga borganda
+    list_display_links = ['name', 'turi']
+
+    # quyidagi fieldlarni jadvalni o'zida to'g'irlash imkonini beradi editpagega kirmasdan
+    list_editable = ['active']
+
+    fieldsets = (
+        ('Umumiy ma\'lumotlar', {
+            'fields': ('name', 'slug', 'turi', 'date','active')
+        }),
+        ('Qo\'shimcha ma\'lumotlar', {
+            'classes': ('collapse',),  # Qisqartirilgan (collapse) holda ko'rsatish
+            'fields': ('body', 'body_small', 'image')
+        }),
+    )
 
