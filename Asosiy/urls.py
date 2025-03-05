@@ -10,8 +10,13 @@ from Asosiy.views import (
     RahbariyatPageView,
     BayonotPageView,
     StrategiyaPageView,
-    YangilikPageView, CategoryFilterView, single_View,
-    # YangilikFilter,
+    YangilikPageView,
+    CategoryFilterView,
+    YangiliklarsingleView,
+    KonfirensiyalarView,
+    KonfirensiyasingleView,
+    TanlovlarsingleView,
+    TanlovlarView
 )
 
 # Create your tests here.
@@ -25,5 +30,9 @@ urlpatterns = [
     path('harakatlar-strategiyasi/', StrategiyaPageView.as_view(), name='harakatlar_strategiyasi'),
     path('yangiliklar/', YangilikPageView.as_view(), name='yangiliklar'),
     path('yangiliklar/filter/<slug:slug>', CategoryFilterView.as_view(), name='yangiliklik_filter'),
-    path('yangiliklar/<str:slug>', single_View , name='yangilik'),
+    path('yangiliklar/<str:slug>', YangiliklarsingleView, name='yangilik'),
+    path('konfirensiyalar/', KonfirensiyalarView.as_view(), name='konfirensiyalar'),
+    path('konfirensiyalar/<str:slug>', KonfirensiyasingleView, name='konfirensiya'),
+    path('tanlovlar/', TanlovlarView.as_view(), name='tanlovlar'),
+    path('tanlovlar/<slug:slug>', TanlovlarsingleView, name='tanlov'),
 ]

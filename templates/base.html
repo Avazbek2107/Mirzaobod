@@ -50,23 +50,6 @@
     <marquee behavior="" direction="right" style="color: red;">Platforma test rejimida ishlamoqda</marquee>
 </div>
 
-<div class="search-section">
-    <a class="close-search" href="#"></a>
-    <div class="d-flex justify-content-center align-items-center h-100">
-        <form method="post" action="#" class="w-50">
-            <div class="row">
-                <div class="col-10">
-                    <input type="search" value="" class="form-control palce bg-transparent border-0 search-input"
-                           placeholder="Qidiruv ..."/>
-                </div>
-                <div class="col-2 mt-3">
-                    <button type="submit" class="btn bg-transparent text-white"><i class="fas fa-search"></i></button>
-                </div>
-            </div>
-        </form>
-    </div>
-
-</div>
 
 <!-- Loading Screen -->
 <div id="ju-loading-screen">
@@ -97,7 +80,7 @@
             <div class="col-12 col-md-10 col-lg-9 pr-md-0">
                 <nav class="navbar navbar-expand-md btco-hover-menu py-lg-2">
 
-                    <a class="navbar-brand pl-0" href="index.html"><img
+                    <a class="navbar-brand pl-0" href="{% url 'home' %}"><img
                             src="{% static 'assets/custom/images/fables-logo.png' %}"
                             width="100%" alt="Fables Template"
                             class="fables-logo"></a>
@@ -109,7 +92,7 @@
 
                         <ul class="navbar-nav mx-auto fables-nav">
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="index.html" id="sub-nav1"
+                                <a class="nav-link dropdown-toggle" href="{% url 'home' %}" id="sub-nav1"
                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Ta'lim
                                 </a>
@@ -145,18 +128,13 @@
                                         dasturlari </a></li>
                                 </ul>
                             </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="sub-nav4" data-toggle="dropdown"
-                                   aria-haspopup="true" aria-expanded="false">
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'yangiliklar' %}">
                                     Yangiliklar
                                 </a>
-                                <ul class="dropdown-menu" aria-labelledby="sub-nav4">
-                                    <li><a class="dropdown-item" href="{% url 'yangiliklar' %}">Yangiliklar dayjesti</a>
-                                    </li>
-                                    <li><a class="dropdown-item" href="blog/yangiliklar_single.html">Yangiliklar haqida
-                                        batafsil</a></li>
-                                </ul>
                             </li>
+
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="sub-nav5" data-toggle="dropdown"
                                    aria-haspopup="true" aria-expanded="false">
@@ -164,8 +142,8 @@
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="sub-nav5">
                                     <li><a class="dropdown-item"
-                                           href="blog/blog-konfirensiyalar.html">Konferensiyalar</a></li>
-                                    <li><a class="dropdown-item" href="blog/blog-tanlovlar.html">Tanlovlar</a></li>
+                                           href="{% url 'konfirensiyalar' %}">Konferensiyalar</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'tanlovlar' %}">Tanlovlar</a></li>
                                     <li><a class="dropdown-item" href="blog/blog-tadbirlar.html">Tadbirlar va
                                         yig'inlar</a>
                                     </li>
@@ -246,13 +224,13 @@
             <div class="col-12 col-sm-6 col-lg-4">
                 <h2 class="font-20 semi-font fables-second-border-color border-bottom pb-3 mb-3">EXPLORE OUR SITE</h2>
                 <ul class="nav fables-footer-links">
-                    <li><a href="harakatlar_strategiyasi.html">Harakatlar strategiyasi va Davlat dasturlari</a></li>
-                    <li><a href="contactus3.html">Onlayn bog'lanish uchun </a></li>
+                    <li><a href="{% url 'harakatlar_strategiyasi' %}">Harakatlar strategiyasi va Davlat dasturlari</a></li>
+                    <li><a href="{% url 'boglanish' %}">Onlayn bog'lanish uchun </a></li>
                     <!-- Boshqa narsaga ozgatrish kerak shunchaki qlb quydm-->
                     <li><a href="gallery.html">Kop beriladigan savollar(FAQs)</a></li>
-                    <li><a href="rahbariyat_azolari.html">Rahbariyat</a></li>
-                    <li><a href="blog/axborot_markazi.html">Yangiliklarni o'qish</a></li>
-                    <li><a href="bayonotlar.html">Rasmiy Bayonotlar</a></li>
+                    <li><a href="{% url 'rahbariyat' %}">Rahbariyat</a></li>
+                    <li><a href="{% url 'yangiliklar' %}">Yangiliklarni o'qish</a></li>
+                    <li><a href="{% url 'bayonolar' %}">Rasmiy Bayonotlar</a></li>
                 </ul>
             </div>
 

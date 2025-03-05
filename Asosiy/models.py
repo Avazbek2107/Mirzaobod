@@ -33,13 +33,13 @@ class Tanlov(models.Model):
     body = models.TextField()
     body_small = models.CharField(max_length=250,)
     active = models.BooleanField(default=True)
-
+    publish_time = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.nomi
     def get_absolute_url(self):
         pass
-        # return reverse("yonalish_detail", kwargs={"slug": self.slug})
+        return reverse("TanlovlarsingleView", kwargs={"slug": self.slug})
 
 
     class Meta:
@@ -79,17 +79,17 @@ class Konfirensiya(models.Model):
     body = models.TextField()
     body_small = models.CharField(max_length=250,)
     active = models.BooleanField(default=True)
+    publish_time = models.DateTimeField(auto_now_add=True)
 
 
     def __str__(self):
         return self.nomi
     def get_absolute_url(self):
-        pass
-        # return reverse("yonalish_detail", kwargs={"slug": self.slug})
+        return reverse("konfirensiya", kwargs={"slug": self.slug})
 
 
     class Meta:
-        ordering = ['boshlanish_sanasi']
+        ordering = ['-boshlanish_sanasi']
         # ordering = ['publish_time'] # birinchi yozilgna birinchi chiqadi
         verbose_name_plural = "Konfirensiyalar"
         verbose_name = "Konfirensiya"
@@ -249,7 +249,7 @@ class Harakatlar(models.Model):
 
 class Yangiliklar_turi(models.Model):
     name = models.CharField(max_length=100)
-    slug = models.SlugField(blank=True, null=True)
+    slug = models.SlugField(unique=True, max_length=100)
     def __str__(self):
         return self.name
     class Meta:
@@ -264,6 +264,7 @@ class Yangiliklar(models.Model):
     turi = models.ForeignKey(Yangiliklar_turi, on_delete=models.CASCADE)
     image = models.ImageField(upload_to='yangiliklar_images/')
     active = models.BooleanField(default=True)
+    publish_time = models.DateTimeField(auto_now_add=True)
     def __str__(self):
         return self.name
 
@@ -271,7 +272,7 @@ class Yangiliklar(models.Model):
         return reverse("yangilik", kwargs={"slug": self.slug})
 
     class Meta:
-        ordering = ['date']
+        ordering = ['-date']
         verbose_name_plural = 'Yangiliklar'
 
 

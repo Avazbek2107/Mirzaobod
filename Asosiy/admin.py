@@ -71,6 +71,7 @@ class TanlovAdmin(admin.ModelAdmin):
     # ordering tartiblash uchun ishlatiladi birinchi active bo'yicha keyin boshlanish_sanasi
     ordering = ['active', 'boshlanish_sanasi']
 
+    prepopulated_fields = {'slug': ('nomi',)}
     # quyidagi fieldlarni jadvalni o'zida to'g'irlash imkonini beradi editpagega kirmasdan
     list_editable = ['active']
 
@@ -107,7 +108,7 @@ class KonfirensiyaAdmin(admin.ModelAdmin):
     # data_hierarchy yil oy kun bo'yicha ajratish uchun ishlatiladi
     date_hierarchy = 'boshlanish_sanasi'
     search_fields = ['nomi']
-
+    prepopulated_fields = {'slug': ('nomi',)}
     # ordering tartiblash uchun ishlatiladi birinchi active bo'yicha keyin boshlanish_sanasi
     ordering = ['active', 'boshlanish_sanasi']
 
