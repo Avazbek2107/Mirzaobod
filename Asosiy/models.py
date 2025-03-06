@@ -39,12 +39,12 @@ class Tanlov(models.Model):
         return self.nomi
     def get_absolute_url(self):
         pass
-        return reverse("TanlovlarsingleView", kwargs={"slug": self.slug})
+        return reverse("tanlov", kwargs={"slug": self.slug})
 
 
     class Meta:
-        ordering = ['boshlanish_sanasi']
-        # ordering = ['publish_time'] # birinchi yozilgna birinchi chiqadi
+        ordering = ['-boshlanish_sanasi']
+
         verbose_name_plural = "Tanlovlar"
         verbose_name = "Tanlov"
 
@@ -61,12 +61,11 @@ class Tadbir(models.Model):
     def __str__(self):
         return self.nomi
     def get_absolute_url(self):
-        pass
-        # return reverse("yonalish_detail", kwargs={"slug": self.slug})
+        return reverse("tadbir", kwargs={"slug": self.slug})
 
 
     class Meta:
-        ordering = ['boshlanish_sanasi']
+        ordering = ['-boshlanish_sanasi']
         # ordering = ['publish_time'] # birinchi yozilgna birinchi chiqadi
         verbose_name_plural = "Tadbirlar"
         verbose_name = "Tadbir"

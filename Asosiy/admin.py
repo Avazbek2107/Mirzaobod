@@ -48,7 +48,7 @@ class TadbirAdmin(admin.ModelAdmin):
     # data_hierarchy yil oy kun bo'yicha ajratish uchun ishlatiladi
     date_hierarchy = 'boshlanish_sanasi'
     search_fields = ['nomi']
-
+    prepopulated_fields = {'slug': ('nomi',)}
     # ordering tartiblash uchun ishlatiladi birinchi active bo'yicha keyin boshlanish_sanasi
     ordering = ['active', 'boshlanish_sanasi']
 

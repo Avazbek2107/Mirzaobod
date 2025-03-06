@@ -140,33 +140,35 @@ class TanlovlarView(ListView):
     def get_context_data(self, **kwargs):
         context = super(TanlovlarView, self).get_context_data(**kwargs)
         context['tanlovlar'] = Tanlov.objects.all().filter(active=True)
-        context['oxirgi_postlar'] = Tanlov.objects.all().filter(active=True).order_by('-publish_time')[:5]
+        context['oxirgi_postlar'] = Tanlov.objects.all().filter(active=True)[:5]
         return context
 
 def TanlovlarsingleView(request,slug):
     tanlov = get_object_or_404(Tanlov, slug=slug,active=True)
-    oxirgi_postlar = Tanlov.objects.filter(active=True).order_by('-boshlanish_sanasi')[:4]
+    oxirgi_postlar = Tanlov.objects.filter(active=True)[:4]
     context = {
         'tanlov':tanlov,
         'oxirgi_postlar':oxirgi_postlar,
     }
     return render(request,'blog/tanlov_detail.html',context)
 
-# class TanlovlarFilterView(ListView):
-#     model = Tanlov
-#     template_name = 'blog/tanlovlar_filter.html'
-#     context_object_name = 'yangiliklar'
-#
-#     def get_queryset(self):
-#         slug = self.kwargs['slug']
-#         turi_id = Yangiliklar_turi.objects.get(slug=slug).id
-#         return Yangiliklar.objects.filter(turi_id=turi_id, active=True)
-#
-#     def get_context_data(self, **kwargs):
-#         context = super().get_context_data(**kwargs)
-#         context['categories'] = Yangiliklar_turi.objects.all()[:12]
-#         context['oxirgi_postlar'] = Yangiliklar.objects.filter(active=True).order_by('-date')[:5]
-#         return context
+class TadbirlarView(ListView):
+    model = Tadbir
+    template_name = 'blog/blog-tadbirlar.html'
+    def get_context_data(self, **kwargs):
+        context = super(TadbirlarView, self).get_context_data(**kwargs)
+        context['tadbirlar'] = Tadbir.objects.all().filter(active=True)
+        context['oxirgi_postlar'] = Tadbir.objects.all().filter(active=True)[:5]
+        return context
+
+def TadbirsingleView(request,slug):
+    tadbir = get_object_or_404(Tadbir, slug=slug,active=True)
+    context = {
+        'tadbir':tadbir,
+    }
+    return render(request,'blog/tadbir_detail.html',context)
+
+
 
 
 
