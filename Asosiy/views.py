@@ -168,7 +168,29 @@ def TadbirsingleView(request,slug):
     }
     return render(request,'blog/tadbir_detail.html',context)
 
+class GaleryView(ListView):
+    model = Rasmlar
+    template_name = 'gallery.html'
+    def get_context_data(self, **kwargs):
+        context = super(GaleryView, self).get_context_data(**kwargs)
+        context['categories'] = Rasmlar_turlari.objects.all()[:8]
+        return context
 
+class GaleryFilterView(ListView):
+    model = Rasmlar
+    template_name = 'gallery-filter.html'
+    context_object_name = 'rasmlar'
+
+    def get_queryset(self):
+        slug = self.kwargs['slug']
+        turi_id = Rasmlar_turlari.objects.get(slug=slug).id
+        return Rasmlar.objects.filter(turi_id=turi_id)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['Rasmlar_filtered'] = Rasmlar.objects.all()
+        context['categories'] = Rasmlar_turlari.objects.all()[:8]
+        return context
 
 
 

@@ -16,7 +16,7 @@ from Asosiy.views import (
     KonfirensiyalarView,
     KonfirensiyasingleView,
     TanlovlarsingleView,
-    TanlovlarView, TadbirlarView, TadbirsingleView
+    TanlovlarView, TadbirlarView, TadbirsingleView, GaleryView, GaleryFilterView
 )
 
 # Create your tests here.
@@ -37,4 +37,6 @@ urlpatterns = [
     path('tanlovlar/<slug:slug>', TanlovlarsingleView, name='tanlov'),
     path('tadbirlar/', TadbirlarView.as_view(), name='tadbirlar'),
     path('tadbirlar/<slug:slug>' , TadbirsingleView, name='tadbir'),
+    path('rasmlar/', GaleryView.as_view(), name='rasmlar'),
+    path('rasmlar/filter/<slug:slug>', GaleryFilterView.as_view(), name='rasmlar_filter'),
 ]
