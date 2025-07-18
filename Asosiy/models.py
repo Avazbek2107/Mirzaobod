@@ -275,6 +275,29 @@ class Yangiliklar(models.Model):
         verbose_name_plural = 'Yangiliklar'
 
 
+class Rasmlar_turlari(models.Model):
+    name = models.CharField(max_length=100)
+    slug = models.SlugField(max_length=150, unique=True)
+    publish_time = models.DateTimeField(auto_now_add=True)
+    def __str__(self):
+        return self.name
+    class Meta:
+        ordering = ['-publish_time']
+        verbose_name_plural = 'Rasmlar_turlari'
+        verbose_name = "Rasmlar_turlari"
+
+
+class Rasmlar(models.Model):
+    image = models.ImageField(upload_to='galery_rasmlar/')
+    turi = models.ForeignKey(Rasmlar_turlari, on_delete=models.CASCADE)
+    publish_time = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['-publish_time']
+        verbose_name_plural = 'Rasmlar'
+        verbose_name = "Rasm"
+
+
 
 
 

@@ -14,8 +14,9 @@ from .models import (
     Bayonotlar,
     Harakatlar,
     Yangiliklar,
-    Yangiliklar_turi,
+    Yangiliklar_turi, Rasmlar, Rasmlar_turlari,
 )
+from .views import GaleryView
 
 
 @admin.register(Togaraklar)
@@ -260,3 +261,10 @@ class YangiliklarAdmin(admin.ModelAdmin):
         }),
     )
 
+admin.site.register(Rasmlar)
+@admin.register(Rasmlar_turlari)
+class Rasmlar_turlariAdmin(admin.ModelAdmin):
+    list_didplay = ['id','name']
+    search_fields = ['name']
+    ordering = ['id']
+    prepopulated_fields = {'slug': ('name',)}
